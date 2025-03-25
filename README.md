@@ -5,8 +5,6 @@ Gestion Chauffage
 sequenceDiagram
     autonumber
     box Teal Device
-        participant S as Setup
-        participant A as Application
         participant B as Broker
         participant TS as TemperatureSensor
         participant CS as ConsumptionSensor
@@ -27,7 +25,5 @@ sequenceDiagram
         C ->> AP: Adjust Heater Output (On/Off, increase/decrease)
         CS ->> B : Update current consuption
         B ->> M: Info on Electrical Consumption
-        M ->> AP: Update Consumption 
-        A ->> S: Heater control complete
-        
+        M ->> AP: Update Consumption         
 ```
