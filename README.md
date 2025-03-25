@@ -27,3 +27,34 @@ sequenceDiagram
         M ->> AP: Update Consumption
         C ->> AP: Adjust Heater Output (On/Off, increase/decrease)
 ```
+### Architecture
+
+```mermaid
+stateDiagram-v2
+    S: Raspberry Pi Server
+    state S {
+        MQTT: MQTT Broker
+        A: Server Application
+        DB: PostgreSQL Database
+        
+        A --> MQTT: Monitors & send commands
+        MQTT --> A: Notify
+        
+        A --> DB: Updates the database
+    }
+    
+    LD: Heater
+    state LD {
+        B: Broker
+        LC: Heater Controller
+        TS: Temperature Sensor
+        
+        
+        LC --> B: Subscribes /heaterController channel
+        LC --> B: Subscribes /tempSensor
+        TS --> B: Publish /tempSensor
+    }
+    
+    B --> MQTT: Connects
+    
+```
