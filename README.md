@@ -20,10 +20,10 @@ sequenceDiagram
         AP ->> M: Update Heater Status ( if activated / deactivated by user or by time )
         M ->> B: Send asked Temperature
         B ->> HC: Set Temperature
-        HC ->> TS: Monitor Temperature
-        TS ->> HC: Room temperature status
-        C ->> AP: Adjust Heater Output (On/Off, increase/decrease)
+        TS ->> B: Monitor Temperature
+        B ->> HC: Room temperature status
         CS ->> B : Update current consuption
         B ->> M: Info on Electrical Consumption
-        M ->> AP: Update Consumption         
+        M ->> AP: Update Consumption
+        C ->> AP: Adjust Heater Output (On/Off, increase/decrease)
 ```
